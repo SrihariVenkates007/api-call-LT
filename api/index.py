@@ -8,7 +8,7 @@ app = Flask(__name__)
 def get_line_item_details(line_item_ids,code):
     line_item_full = list()
     headers = {"Authorization": "Bearer " + code, "Content-Type": "application/json"}
-    params = {'properties':"name, quantity, price,discount, hs_discount_percentage, hs_term_in_months, partner_commission, recurringbillingfrequency"}
+    params = {'properties':"name, quantity, price,discount, hs_discount_percentage, hs_term_in_months, partner_commission, recurringbillingfrequency, category"}
     for line_item_id in line_item_ids:
         url = "https://api.hubapi.com/crm/v3/objects/line_items/" + str(line_item_id)
         response = requests.get(url, headers=headers, params=params)
