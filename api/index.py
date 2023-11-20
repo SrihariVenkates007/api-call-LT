@@ -54,7 +54,7 @@ def get_hubspot_info():
           error_logs_list.append("No Associated Contact or Company or Line item Found")
           line_item_details = []
       else:
-        error_logs_list.append("Fetching Deal and Association Details Failed!!!")
+        error_logs_list.append("Failed Response!! Invalid Information provided")
         line_item_details = []
     else:
       error_logs_list.append("Invalid HubSpot Deal Record ID provided!!!")
