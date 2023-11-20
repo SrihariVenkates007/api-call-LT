@@ -59,7 +59,7 @@ def get_hubspot_info():
     else:
       error_logs_list.append("Invalid HubSpot Deal Record ID provided!!!")
       line_item_details = []
-    results = {"Line Item Details": line_item_details, "Error Log Details": error_logs_list }
+    results = {"Line Item Details": line_item_details, "Error Log Details": " \n".join(error_logs_list)}
     print(results)
     return results
   except:
