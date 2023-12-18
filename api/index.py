@@ -104,6 +104,7 @@ def get_hubspot_info():
                         lineItem_response = get_line_item_details(line_item_ids,code)
         else:
             error_logs_list.append("Invalid HubSpot Deal Record ID provided!!!")
+            return { "error_log_details": error_logs_list }
         results = { "deal_details": resp['properties']['dealname'], "contact_details": contact_response, "company_details": company_response, "partner_details": partner_response, "lineItem_details": lineItem_response, "error_log_details": error_logs_list}
         print(results)
         return results
