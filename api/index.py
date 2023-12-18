@@ -58,16 +58,13 @@ def get_hubspot_info():
         print("ARGS", args)
         if(len(deal_id)> 1):
             headers = { "Authorization": "Bearer " + code, "Content-Type": "application/json" }
-            params = { "associations": "contacts,line_items, company,2-9233637", "properties": "dealtype,dealname"}
+            params = { "associations": "contacts,line_items,company,2-9233637", "properties": "dealtype,dealname"}
             url = "https://api.hubapi.com/crm/v3/objects/deals/" + str(deal_id)
             response = requests.get(url, headers=headers, params=params)
-            print("RESPONSE", response)
             if(response.status_code == 200):
                 resp = response.json()
-                print("RESP", resp)
                 if "associations" in resp:
                     associations = resp['associations']
-
                     contact_results = associations['contacts']['results'] if 'contacts' in associations else []
                     company_results = associations['companies']['results'] if 'companies' in associations else []
                     partner_id = associations['p20215080_partner']['results'] if 'p20215080_partner' in associations else ""
@@ -114,4 +111,3 @@ def get_hubspot_info():
         print(e)
         error_logs_list.append(f"Issue detected: Contact Process Administrator!!!")
         return { "error_details": error_logs_list }
-                            
