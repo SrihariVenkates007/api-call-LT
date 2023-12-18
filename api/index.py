@@ -58,7 +58,7 @@ def get_hubspot_info():
         print("ARGS", args)
         if(len(deal_id)> 1):
             headers = { "Authorization": "Bearer " + code, "Content-Type": "application/json" }
-            params = { "associations": "contacts,line_items,company,2-9233637" }
+            params = { "associations": "contacts,line_items, company,2-9233637", "properties": "dealtype,dealname"}
             url = "https://api.hubapi.com/crm/v3/objects/deals/" + str(deal_id)
             response = requests.get(url, headers=headers, params=params)
             print("RESPONSE", response)
@@ -107,7 +107,7 @@ def get_hubspot_info():
                         lineItem_response = get_line_item_details(line_item_ids,code)
         else:
             error_logs_list.append("Invalid HubSpot Deal Record ID provided!!!")
-        results = { "contact_details": contact_response, "company_details": company_response, "partner_details": partner_response, "lineItem_details": lineItem_response, "error_log_details": error_logs_list}
+        results = { "deal_details": resp.properties.dealname, "contact_details": contact_response, "company_details": company_response, "partner_details": partner_response, "lineItem_details": lineItem_response, "error_log_details": error_logs_list}
         print(results)
         return results
     except Exception as e:
