@@ -109,5 +109,5 @@ def get_hubspot_info():
         return results
     except Exception as e:
         print(e)
-        error_logs_list.append(f"Issue detected: Contact Process Administrator!!!")
+        error_logs_list.append(f"Issue detected:" + str(e))
         return { "error_log_details": error_logs_list }
