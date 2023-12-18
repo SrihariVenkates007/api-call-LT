@@ -102,6 +102,9 @@ def get_hubspot_info():
 
                     if(len(line_item_ids) >= 1):
                         lineItem_response = get_line_item_details(line_item_ids,code)
+            else:
+                error_logs_list.append("Invalid HubSpot Deal Record ID provided!!!")
+                return { "error_log_details": error_logs_list }
         else:
             error_logs_list.append("Invalid HubSpot Deal Record ID provided!!!")
             return { "error_log_details": error_logs_list }
