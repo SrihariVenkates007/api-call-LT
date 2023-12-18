@@ -37,7 +37,7 @@ def get_company_details(company_id, code):
 
 def get_partner_details(partner_id, code):
     headers = {"Authorization": "Bearer " + code, "Content-Type": "application/json"}
-    params = {"properties": "name"}
+    params = {"properties": "partner_name"}
     url = "https://api.hubapi.com/crm/v3/objects/2-9233637/" + partner_id
     response = requests.get(url, headers=headers, params=params)
     if(response.status_code == 200):
@@ -114,8 +114,4 @@ def get_hubspot_info():
         print(e)
         error_logs_list.append(f"Issue detected: Contact Process Administrator!!!")
         return { "error_details": error_logs_list }
-
-
-if __name__ == '__main__':  
-   app.run()
                             
