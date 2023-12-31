@@ -82,7 +82,7 @@ def get_hubspot_info():
                             if(companies['type'] == "deal_to_company"):
                                 company_id = companies['id']
 
-                    if(len(line_item_results) > 1):
+                    if(len(line_item_results) >= 1):
                         for line_items in line_item_results:
                             line_item_ids.append(line_items['id'])
 
