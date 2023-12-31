@@ -57,6 +57,7 @@ def get_hubspot_info():
         code = args.get("code")
         print("ARGS", args)
         if(len(deal_id)> 1):
+            line_item_ids = list()
             headers = { "Authorization": "Bearer " + code, "Content-Type": "application/json" }
             params = { "associations": "contacts,line_items,company,2-9233637", "properties": "dealtype,dealname"}
             url = "https://api.hubapi.com/crm/v3/objects/deals/" + str(deal_id)
@@ -82,7 +83,6 @@ def get_hubspot_info():
                                 company_id = companies['id']
 
                     if(len(line_item_results) > 1):
-                        line_item_ids = list()
                         for line_items in line_item_results:
                             line_item_ids.append(line_items['id'])
 
