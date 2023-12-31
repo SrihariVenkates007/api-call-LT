@@ -69,6 +69,7 @@ def get_hubspot_info():
                     company_results = associations['companies']['results'] if 'companies' in associations else []
                     partner_id = associations['p20215080_partner']['results'][0]['id'] if 'p20215080_partner' in associations else ""
                     line_item_results = associations['line items']['results'] if 'line items' in associations else []
+                    print("Line Item Results", line_item_results)
 
                     if(len(contact_results) > 1):
                         for contacts in contact_results:
@@ -100,6 +101,7 @@ def get_hubspot_info():
                     else:
                         partner_response = {}
 
+                    print(line_item_ids)
                     if(len(line_item_ids) >= 1):
                         lineItem_response = get_line_item_details(line_item_ids,code)
             else:
